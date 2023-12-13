@@ -30,6 +30,9 @@ jobs:
           - target: x86_64-pc-windows-msvc
             os: windows-latest
     runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: ./fbx-sanitizer
     steps:
       - uses: actions/checkout@v4
       - uses: taiki-e/upload-rust-binary-action@v1
@@ -42,4 +45,3 @@ jobs:
           target: ${{ matrix.target }}
           # (required) GitHub token for uploading assets to GitHub Releases.
           token: ${{ secrets.GITHUB_TOKEN }}
-          manifest-path: fbx-sanitizer/Cargo.toml
